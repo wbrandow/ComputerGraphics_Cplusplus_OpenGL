@@ -4,6 +4,8 @@ Computer graphics example code written in C++ using OpenGL
 # Purpose
 This code was written in CS-330, a computer graphics course focused on OpenGL, an industry standard for C++ graphics libraries.  This program renders a pencil on a table top.  A screenshot has also been included, CS-330_pencil.jpg.
 
+![CS-330_pencil](https://user-images.githubusercontent.com/31283921/218006827-a0c995af-fa2b-4528-857b-79e4c4910326.jpeg)
+
 # Additional Libraries
 All code in this repository was written by William Brandow.  Additional libraries required for the execution of this code are as follows:
  - GLFW (version 3.3.8) - glfw.org
