@@ -2,9 +2,9 @@
 Computer graphics example code written in C++ using OpenGL
 
 # Purpose
-This code was written in CS-330, a computer graphics course focused on OpenGL, an industry standard for C++ graphics libraries.  This program renders a pencil on a table top.  A screenshot has also been included, CS-330_pencil.jpg.
+This code was written in CS-330, a computer graphics course focused on OpenGL, an industry standard for C++ graphics libraries.  This program renders a a few objects on a table top.  A screenshot is included below.
 
-![CS-330_pencil](https://user-images.githubusercontent.com/31283921/218006827-a0c995af-fa2b-4528-857b-79e4c4910326.jpeg)
+![CS-330_Screenshot](https://user-images.githubusercontent.com/31283921/221336913-85d96402-1c60-42c1-b334-e1d0bb2aebd9.jpg)
 
 # Additional Libraries
 All code in this repository was written by William Brandow.  Additional libraries required for the execution of this code are as follows:
@@ -14,12 +14,11 @@ All code in this repository was written by William Brandow.  Additional librarie
  - stb_image - github.com/nothings/stb
  
  # Lessons Learned
- This project involved more than getting good practice with C++ and some very useful graphics libraries.  This was an excellent trigonometry and linear algebra refresher.  It was also good to get practice in Visual Studio IDE.
+ This project involved more than getting good practice with C++ and some very useful graphics libraries.  This was a behind the scenes look at how programs like Blender and AutoCAD work.  Both of these are written using OpenGL.  Having this deeper understanding of these programs will make them much easier to learn. 
+ This has also been important practice in creating modular code.  My Shape.cpp file can be reused on future projects to quickly create new scenes in a fraction of the time.  This skill is useful in all disciplines of software development, not just computer graphics.
  
  # Future Development
- Work on this code is still ongoing.  As part of this project several more objects will be added.  I will add several more methods to Shape.cpp for shapes, such as, tori, and spheres.   In the future, I would like to finish the table as well and make an entire room.  I will also add additional light sources such as windows and lamps.  
- 
- From a code maintenance standpoint, I would like to move input processing functions into their own .cpp file.  This will make the code easier to read and understand.  It will also ensure easy reuse of common input processing methods for other projects.
+Work on this project is still ongoing.  I would like to spend more time texturing the objects and adding shadows in order to make the scene more realistic.  I would also like to add code to prevent the camera from passing through the objects.  After that I will likely stop adding to this scene and rather focus on refactoring the code to ensure I'm able to reuse as much as possible in future projects.  For example, I would like to move input processing functions into their own .cpp file.  
  
  
  
