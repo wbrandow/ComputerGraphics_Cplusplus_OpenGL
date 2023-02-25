@@ -14,7 +14,7 @@ All code in this repository was written by William Brandow.  Additional librarie
  - stb_image - github.com/nothings/stb
  
  # Lessons Learned
- This project involved more than getting good practice with C++ and some very useful graphics libraries.  This was a behind the scenes look at how programs like Blender and AutoCAD work.  Both of these are written using OpenGL.  Having this deeper understanding of these programs will make them much easier to learn. 
+ This project was a behind the scenes look at how programs like Blender and AutoCAD work.  Both of these are written using OpenGL.  Having this deeper understanding of these programs will make them much easier to learn. 
  This has also been important practice in creating modular code.  My Shape.cpp file can be reused on future projects to quickly create new scenes in a fraction of the time.  This skill is useful in all disciplines of software development, not just computer graphics.
  
  # Future Development
