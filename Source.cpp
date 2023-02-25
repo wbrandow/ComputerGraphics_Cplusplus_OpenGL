@@ -32,12 +32,27 @@ namespace
     // plane data
     Shape plane;
 
+    // book data
+    Shape bookPages;
+    Shape bookTopCover;
+    Shape bookBottomCover;
+    Shape bookSpine;
+
+    // orange data
+    Shape orange;
+
+    // mug data
+    Shape mugOuterWall;
+    Shape mugCoffee;
+    Shape mugBase;
+    Shape mugHandle;
+
     // texture data
-    GLuint texture0, texture1, texture2;
+    GLuint texture0, texture1, texture2, texture3;
 
     // create camera variables
     float speedVariable = 2.5f;
-    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+    glm::vec3 cameraPos = glm::vec3(1.0f, 2.0f, 8.0f);
     glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
     glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
@@ -56,7 +71,7 @@ namespace
 
     // lighting
     glm::vec3 objectColor = glm::vec3(0.0f, 1.0f, 0.0f);
-    glm::vec3 lightPosition = glm::vec3(-0.8, 0.8, 0.8);
+    glm::vec3 lightPosition = glm::vec3(5.0, 2.0, 5.0);
     glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 }
 
@@ -87,6 +102,8 @@ int main(int argc, char* argv[])
     myShader.setInt("texture1", 1);
     createTexture(GL_TEXTURE2, texture2, "./texture_plane3.jpg", GL_REPEAT);
     myShader.setInt("texture2", 2);
+    createTexture(GL_TEXTURE3, texture3, "./adventuresOfBilbroSwaggins.jpg", GL_REPEAT);
+    myShader.setInt("texture3", 3);
 
     // create plane
     plane.createPlane(plane, 10.0f, 10.0f);
@@ -98,6 +115,21 @@ int main(int argc, char* argv[])
     pencilEraser.createCylinder(pencilEraser, 0.06f, 0.06f, 0.1f, 10);
     pencilEraserTop.createDisk(pencilEraserTop, 0.06, 10);
     pencilGraphite.createCylinder(pencilGraphite, 0.01f, 0.0f, 0.02f, 10);
+
+    // create book shapes
+    bookPages.createCube(bookPages, 1.3f, 2.0f, 0.3f);
+    bookTopCover.createCube(bookTopCover, 1.31f, 2.03f, 0.01f);
+    bookBottomCover.createCube(bookBottomCover, 1.31f, 2.03f, 0.01f);
+    bookSpine.createCube(bookSpine, 0.01f, 2.03f, 0.3f);
+
+    // create orange
+    orange.createSphere(orange, 0.3f, 10, 5);
+
+    // create mug
+    mugOuterWall.createCylinder(mugOuterWall, 0.4f, 0.4f, 0.7f, 10);
+    mugBase.createDisk(mugBase, 0.4f, 10);
+    mugCoffee.createDisk(mugCoffee, 0.4f, 10);
+    mugHandle.createTorus(mugHandle, 0.15f, 0.045f, 10, 10);
 
     // Sets the background color of the window to black (it will be implicitely used by glClear)
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -128,6 +160,21 @@ int main(int argc, char* argv[])
     pencilEraser.destroyShape(pencilEraser);
     pencilEraserTop.destroyShape(pencilEraserTop);
     pencilGraphite.destroyShape(pencilGraphite);
+
+    // release memory from book data
+    bookPages.destroyShape(bookPages);
+    bookTopCover.destroyShape(bookTopCover);
+    bookBottomCover.destroyShape(bookBottomCover);
+    bookSpine.destroyShape(bookSpine);
+
+    // release memory from orange data
+    orange.destroyShape(orange);
+
+    // release memory from mug
+    mugOuterWall.destroyShape(mugOuterWall);
+    mugBase.destroyShape(mugBase);
+    mugCoffee.destroyShape(mugCoffee);
+    mugHandle.destroyShape(mugHandle);
 
     // release memory from plane data
     plane.destroyShape(plane);
@@ -250,6 +297,91 @@ void URender(Shader myShader)
     myShader.setMat4("model", model);
     // glDrawElements(GL_TRIANGLES, pencilEraserTop.nIndices, GL_UNSIGNED_SHORT, NULL);
     glDrawArrays(GL_TRIANGLES, 0, 30);
+
+    // draw book bottom cover
+    glBindVertexArray(bookBottomCover.vao);
+    myShader.setFloat3("objectColor", 0.45f, 0.45f, 0.45f);
+    myShader.setInt("useTexture", 99);
+    translation = glm::translate(translation, glm::vec3(2.0f, -0.119f, 0.0f));
+    rotation = glm::rotate(glm::radians(30.0f), glm::vec3(0.0, 1.0f, 0.0f));
+    model = translation * rotation * scale;
+    myShader.setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+
+    //draw book spine
+    glBindVertexArray(bookSpine.vao);
+    myShader.setFloat3("objectColor", 0.45f, 0.45f, 0.45f);
+    myShader.setInt("useTexture", 99);
+    translation = glm::translate(translation, glm::vec3(-1.12585f, 0.02f, 0.65f));
+    model = translation * rotation * scale;
+    myShader.setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+
+    // draw book pages
+    glBindVertexArray(bookPages.vao);
+    myShader.setFloat3("objectColor", 0.97f, 0.97f, 0.97f);
+    myShader.setInt("useTexture", 99);
+    translation = glm::translate(translation, glm::vec3(1.12585f, 0.0f, -0.65f));
+    model = translation * rotation * scale;
+    myShader.setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+
+    // draw book top cover
+    glBindVertexArray(bookTopCover.vao);
+    myShader.setFloat3("objectColor", 0.35f, 0.35f, 0.05f);
+    myShader.setInt("useTexture", 3);
+    translation = glm::translate(translation, glm::vec3(0.0f, 0.6f, 0.0f));
+    model = translation * rotation * scale;
+    myShader.setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+
+    // draw orange
+    glBindVertexArray(orange.vao);
+    myShader.setFloat3("objectColor", 0.8f, 0.3f, 0.0f);
+    myShader.setInt("useTexture", 99);
+    translation = glm::translate(translation, glm::vec3(-4.0f, -0.05f, -2.0f));
+    model = translation * rotation * scale;
+    myShader.setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 600);
+
+    // draw mug outer wall
+    glBindVertexArray(mugOuterWall.vao);
+    myShader.setFloat3("objectColor", 1.0f, 0.5f, 0.0f);
+    myShader.setInt("useTexture", 99);
+    translation = glm::translate(translation, glm::vec3(-2.0f, 0.13f, 3.5f));
+    rotation = glm::rotate(glm::radians(90.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
+    model = translation * rotation * scale;
+    myShader.setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 60);
+
+    // draw mug base
+    glBindVertexArray(mugBase.vao);
+    myShader.setFloat3("objectColor", 0.6f, 0.3f, 0.0f);
+    myShader.setInt("useTexture", 99);
+    translation = glm::translate(translation, glm::vec3(0.0f, -0.7f, 0.0f));
+    model = translation * rotation * scale;
+    myShader.setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 30);
+
+    // draw mug coffee
+    glBindVertexArray(mugCoffee.vao);
+    myShader.setFloat3("objectColor", 0.15f, 0.1f, 0.0f);
+    myShader.setInt("useTexture", 99);
+    translation = glm::translate(translation, glm::vec3(0.0f, 1.2f, 0.0f));
+    model = translation * rotation * scale;
+    myShader.setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 30);
+
+    // draw mug handle
+    glBindVertexArray(mugHandle.vao);
+    myShader.setFloat3("objectColor", 0.2f, 0.1f, 0.0f);
+    myShader.setInt("useTexture", 99);
+    translation = glm::translate(translation, glm::vec3(-1.0f, -0.4f, 0.0f));
+    rotation = glm::rotate(glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    model = translation * rotation * scale;
+    myShader.setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 600);
+
 
     // Deactivate the Vertex Array Object
     glBindVertexArray(0);
@@ -432,6 +564,12 @@ void destroyTexture(GLuint texture)
 {
     glGenTextures(1, &texture);
 }
+
+
+
+
+
+
 
 
 
