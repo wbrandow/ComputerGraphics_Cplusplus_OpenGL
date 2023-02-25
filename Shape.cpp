@@ -509,6 +509,8 @@
         {
             for (int j = 0; j < numStacks; j++)
             {
+                // FIXME: Use a loop and switch like in createTorus() rather than typing all this out.
+                
                 // calculate segmentAngle and stackAngle for vertex at segment i and stack j
                 segmentAngle = ((360.0 / numSegments) * i) * (3.14159 / 180);
                 stackAngle = ((90.0 / numStacks) * j) * (3.14159 / 180);
