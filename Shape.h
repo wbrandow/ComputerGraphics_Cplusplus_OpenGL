@@ -16,6 +16,9 @@ public:
     void createCylinder(Shape& mesh, float radiusTop, float radiusBottom, float height, int numSegments);
     void createDisk(Shape& mesh, float radius, float numSegments);
     void createPlane(Shape& mesh, float width, float length);
+    void createCube(Shape& mesh, float width, float length, float height);
+    void createSphere(Shape& mesh, float radius, int numSegments, int numStacks);
+    void createTorus(Shape& mesh, float bigRadius, float smallRadius, int numSides, int numSegments);
     void destroyShape(Shape& mesh);
 };
 #endif
