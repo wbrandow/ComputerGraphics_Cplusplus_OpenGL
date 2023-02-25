@@ -183,6 +183,7 @@ int main(int argc, char* argv[])
     destroyTexture(texture0);
     destroyTexture(texture1);
     destroyTexture(texture2);
+    destroyTexture(texture3);
 
     // Release shader program
     myShader.destroy();
