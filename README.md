@@ -18,7 +18,7 @@ All code in this repository was written by William Brandow.  Additional librarie
  This has also been important practice in creating modular code.  My Shape.cpp file can be reused on future projects to quickly create new scenes in a fraction of the time.  This skill is useful in all disciplines of software development, not just computer graphics.
  
  # Future Development
-Work on this project is still ongoing.  I would like to spend more time texturing the objects and adding shadows in order to make the scene more realistic.  I would also like to add code to prevent the camera from passing through the objects.  After that I will likely stop adding to this scene and rather focus on refactoring the code to ensure I'm able to reuse as much as possible in future projects.  For example, I would like to move input processing functions into their own .cpp file.  
+Work on this project is still ongoing.  I would like to spend more time texturing the objects and adding shadows in order to make the scene more realistic.  I would also like to add code to prevent the camera from passing through the objects.  After that I will likely stop adding to this scene and focus instead on refactoring the code to ensure I'm able to reuse as much as possible in future projects.  For example, I would like to move input processing functions into their own .cpp file.  
  
  
  
