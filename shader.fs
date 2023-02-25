@@ -14,6 +14,7 @@ uniform vec3 cameraPos;
 uniform sampler2D texture0;
 uniform sampler2D texture1;
 uniform sampler2D texture2;
+uniform sampler2D texture3;
 uniform int useTexture = 0;
 
 void main()
@@ -53,6 +54,11 @@ void main()
     }
     else if (useTexture == 2){
         textureColor = texture(texture2, TexCoord);
+        // Calculate Phong result.
+        phongResult = (ambient + diffuse + specular) * textureColor.xyz;
+    }
+    else if (useTexture == 3){
+        textureColor = texture(texture3, TexCoord);
         // Calculate Phong result.
         phongResult = (ambient + diffuse + specular) * textureColor.xyz;
     }
